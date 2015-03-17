@@ -1,0 +1,20 @@
+@mixin TRANSITION($property, $duration, $anim-timing) {
+  transition: $property $duration $anim-timing;
+}
+
+
+#gallery {
+  position: relative;
+
+  li {
+    @include TRANSITION(opacity, 300ms, ease-in);
+    opacity: 0;
+    position: absolute;
+    z-index: 0;
+   }
+
+  li.active {
+    opacity: 1;
+    z-index: 1;
+  }
+}
