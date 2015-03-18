@@ -1,2 +1,2 @@
 # goog-streetview-gallery
-Google Street View gallery using Google's Closure
+Street View gallery using Google Closure and Google Sheets API.
