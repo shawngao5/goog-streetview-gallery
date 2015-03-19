@@ -4,8 +4,8 @@
  * @author jguinto
  */
 
-goog.provide('sv.Gallery');
 goog.provide('google.visualization.Query');
+goog.provide('sv.Gallery');
 
 goog.require('goog.dom');
 goog.require('goog.dom.DomHelper');
@@ -16,29 +16,39 @@ goog.require('goog.events.EventHandler');
 
 /**
  * Street View gallery constructor.
+ * @param {JSONObject} data
  * @constructor
  */
 sv.Gallery = function(data) {
+  /** @private {!JSONObject} */
   this.data_ = data;
+
+  /** @private {!goog.dom.DomHelper} */
+  this.dom_ = new goog.dom.DomHelper();
+
   this.init_();
 };
 goog.exportSymbol('sv.Gallery', sv.Gallery);
 
 
-sv.Gallery.prototype.dom_ = new goog.dom.DomHelper();
+/** @private {!Element} The gallery containing the Street Views. */
+sv.Gallery.prototype.gallery_ = goog.dom.getElementByClass('gallery');
 
 
-sv.Gallery.prototype.gallery_ = goog.dom.getElement('gallery');
+/** @private {!Element} The gallery navigation. */
+sv.Gallery.prototype.galleryNav_ = goog.dom.getElementByClass('gallery-nav');
 
 
-sv.Gallery.prototype.galleryNav_ = goog.dom.getElement('gallery-nav'); 
-
-
+/** @private {number} The Street View selected to view. */
 sv.Gallery.prototype.selectedGalleryIndex_ = 0;
 
 
+/**
+ * Initializes the creation of the gallery DOM and the click listener on nav.
+ * @private
+ */
 sv.Gallery.prototype.init_ = function() {
-  this.buildModule_();
+  this.buildGallery_();
   this.handler_ = new goog.events.EventHandler(this);
   this.handler_.listen(this.galleryNav_, 'click', function(e) {
     var target = e.target;
@@ -49,7 +59,11 @@ sv.Gallery.prototype.init_ = function() {
 };
 
 
-sv.Gallery.prototype.buildModule_ = function() {
+/**
+ * Builds the Street View gallery and navigation.
+ * @private
+ */
+sv.Gallery.prototype.buildGallery_ = function() {
   var items = this.data_.table.rows;
   for (var i = 1; i < items.length; i++) {
     var place = items[i].c[0].v;
@@ -71,12 +85,17 @@ sv.Gallery.prototype.buildModule_ = function() {
     this.dom_.appendChild(galleryItem, streetview);
     this.dom_.appendChild(this.gallery_, galleryItem);
 
-    this.navItems_ = this.dom_.getElementsByClass('nav-item'); 
-    this.galleryItems_ = this.dom_.getElementsByClass('gallery-item'); 
+    this.navItems_ = this.dom_.getElementsByClass('nav-item');
+    this.galleryItems_ = this.dom_.getElementsByClass('gallery-item');
   }
 };
 
 
+/**
+ * Handles the a click event on the navigation.
+ * @param {!Element} navItemClicked
+ * @private
+ */
 sv.Gallery.prototype.handleNavClick_ = function(navItemClicked) {
   var targetIndex;
   var currItem;
@@ -85,10 +104,15 @@ sv.Gallery.prototype.handleNavClick_ = function(navItemClicked) {
     if (currItem === navItemClicked) {
       this.changeGalleryDisplay_(i);
     }
-  }   
+  }
 };
 
 
+/**
+ * Changes the gallery display.
+ * @param {number} newSelectedIndex
+ * @private
+ */
 sv.Gallery.prototype.changeGalleryDisplay_ = function(newSelectedIndex) {
   var prevSelectedIndex = this.selectedGalleryIndex_;
   var prevSelectedGallery = this.galleryItems_[prevSelectedIndex];
@@ -105,7 +129,11 @@ sv.Gallery.prototype.changeGalleryDisplay_ = function(newSelectedIndex) {
 };
 
 
+/**
+ * Creates a new Street View gallery as a callback when Google Sheets API
+ * successfully responds with data.
+ * @param {JSONObject} data
+ */
 google.visualization.Query.setResponse = function(data) {
   new sv.Gallery(data);
 };
-

@@ -1,8 +1,7 @@
-*.png
 *.gif
-*.psd
 *.min.css
 *.min.js
-*.css.map
+*.png
+*.psd
+node_modules/
 manifest.json
-.sass-cache/
