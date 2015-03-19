@@ -1,5 +1,8 @@
 # goog-streetview-gallery
-Street View gallery using Google Closure and Google Sheets API.
+Street View gallery using MVC pattern:
+  - Google Sheets API for the model.
+  - SASS for the view.
+  - Google Closure for the controller.
 
 ## Run a demo
 - Clone this goog-streetview-gallery repo.
