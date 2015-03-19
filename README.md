@@ -8,11 +8,15 @@ Street View gallery using Google Closure and Google Sheets API.
 
 # Code details
 - Data is written in Google Sheets, which acts like a database. For this demo, the data is written here:
+
   ```
   https://docs.google.com/spreadsheets/d/1pLm0dw1TgT0W8_CfGLVPfrgrFunW7GijNyHwwVv-dz4/
   ```
+
 - The data is then retrieved through JSONP using Google Sheets API. For this demo, it's this:
+
   ```
   https://docs.google.com/spreadsheets/d/1pLm0dw1TgT0W8_CfGLVPfrgrFunW7GijNyHwwVv-dz4/gviz/tq?gid=gallery
   ```
+
 - Then Google Closure JS is used to build the gallery. See <code>src/streetview.js.</code>
