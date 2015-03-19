@@ -1,4 +1,5 @@
 # goog-streetview-gallery
+## About
 Street View gallery using MVC pattern:
   - Google Sheets API for the model.
   - SASS for the view.
