@@ -16,11 +16,11 @@ goog.require('goog.events.EventHandler');
 
 /**
  * Street View gallery constructor.
- * @param {JSONObject} data
+ * @param {!Object.<string, string>} data JSON collection of panos.
  * @constructor
  */
 sv.Gallery = function(data) {
-  /** @private {!JSONObject} */
+  /** @private {!Object.<string, string>} */
   this.data_ = data;
 
   /** @private {!goog.dom.DomHelper} */
@@ -31,11 +31,11 @@ sv.Gallery = function(data) {
 goog.exportSymbol('sv.Gallery', sv.Gallery);
 
 
-/** @private {!Element} The gallery containing the Street Views. */
+/** @private {!NodeList} The gallery containing the Street Views. */
 sv.Gallery.prototype.gallery_ = goog.dom.getElementByClass('gallery');
 
 
-/** @private {!Element} The gallery navigation. */
+/** @private {!NodeList} The gallery navigation. */
 sv.Gallery.prototype.galleryNav_ = goog.dom.getElementByClass('gallery-nav');
 
 
@@ -132,7 +132,7 @@ sv.Gallery.prototype.changeGalleryDisplay_ = function(newSelectedIndex) {
 /**
  * Creates a new Street View gallery as a callback when Google Sheets API
  * successfully responds with data.
- * @param {JSONObject} data
+ * @param {!Object.<string, string>} data JSON info of a spreadsheet.
  */
 google.visualization.Query.setResponse = function(data) {
   new sv.Gallery(data);
