@@ -8,7 +8,7 @@ Street View gallery using MVC pattern:
 ## Run a demo
 - Clone this goog-streetview-gallery repo.
 - Use <a href="http://gulpjs.com/" target="_blank">Gulp</a> to generate the minified files.
-- Check out streetview.html to view the demo.
+- Check out <code>index.html</code> to view the demo.
 
 ## Code details
 - Data is written in Google Sheets, which acts like a database. For this demo, the data is written here:
