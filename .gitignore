@@ -1,7 +1,0 @@
-*.gif
-*.min.css
-*.min.js
-*.png
-*.psd
-node_modules/
-manifest.json
