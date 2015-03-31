@@ -1,16 +1,17 @@
 # goog-streetview-gallery
+
 ## About
 Street View gallery using MVC pattern:
   - Google Sheets API for the model.
   - SASS for the view.
   - Google Closure for the controller.
 
-## Run a demo
-- Clone this goog-streetview-gallery repo.
-- Use <a href="http://gulpjs.com/" target="_blank">Gulp</a> to generate the minified files.
-- Check out <code>index.html</code> to view the demo.
+## Live demo
 
-## Code details
+<p><a href="http://jguinto.github.io/goog/streetview/" target="_blank">Play with the demo</a> on a Chrome browser.</p>
+
+## Code
+
 - Data is written in Google Sheets, which acts like a database. For this demo, the data is written here:
 
   ```
